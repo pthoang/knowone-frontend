@@ -15,7 +15,7 @@ export default function Quiz() {
     ])
     
     useEffect(() => {
-      fetch("http://192.168.50.218:3000/intro-questions")
+      fetch("http://localhost:3005/intro-questions")
         .then(res => res.json())
         .then(
           (result) => {
@@ -23,7 +23,6 @@ export default function Quiz() {
             // setIsLoaded(true);
             // setItems(result);
             setQuestions(result.questions)
-            console.log(questions)
           },
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
@@ -38,21 +37,23 @@ export default function Quiz() {
       }, [])
 
       const [indexCount, setIndex] = useState(0);
-
+    
       const currentQuestion = questions[indexCount]
+
+      const nextQuestion = () => (
+        setIndex(indexCount + 1)
+      )
 
 
     return (
         <> 
          <p> Fancy list of questions and options </p>
-          
-          {currentQuestion["question/choices"].map((answer: any, index) => (
-            <>
-              <MCIllustration {...currentQuestion}/> 
-              <Button key={index} variant="contained" sx={{ mx: 2}} onClick={() => setIndex(indexCount + 1)}>{answer["statement/text"]}</Button>
-            </>
-      
-          ))}
+         
+         {currentQuestion && 
+         <>
+          {currentQuestion["question/type"] === "mc/illustration" && <MCIllustration {...currentQuestion} nextQuestion={nextQuestion} />}
+         </>
+         } 
         
          </>
     ) 
