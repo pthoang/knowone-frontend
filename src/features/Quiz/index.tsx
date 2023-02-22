@@ -1,21 +1,15 @@
-import Button from "@mui/material/Button/Button"
 import { useEffect, useState } from "react"
 import MCIllustration from "./MCIllustration"
+import MCStatement from "./MCStatement"
+import MCTraitCloud from "./MCTraitCloud"
 import './style.css'
 import { Question } from "./types"
 
 export default function Quiz() {
-    // const [questions, setQuestions] = useState([
-    //   { 'question/text': 'cupcake or icecream', 'question/choice': [ 'cake', 'icecream' ]},
-    //   { 'question/text': 'cupcake or chocolate',  'question/choice': [ 'cake', 'chocolate']},
-    //   { 'question/text': 'cupcake or candy',  'question/choice': ['cake', 'candy', 'mint']}
-    // ])
-    const [questions, setQuestions] = useState<Question[]>([
-  
-    ])
+    const [questions, setQuestions] = useState<Question[]>([])
     
     useEffect(() => {
-      fetch("http://localhost:3005/intro-questions")
+      fetch("http://192.168.50.218:3005/intro-questions")
         .then(res => res.json())
         .then(
           (result) => {
@@ -54,8 +48,25 @@ export default function Quiz() {
           {currentQuestion["question/type"] === "mc/illustration" && <MCIllustration {...currentQuestion} nextQuestion={nextQuestion} />}
          </>
          } 
+
+        {currentQuestion && 
+         <>
+          {currentQuestion["question/type"] === "mc/statement" && <MCStatement {...currentQuestion} nextQuestion={nextQuestion}/>}
+         </>
+         } 
+
+        {currentQuestion && 
+         <>
+          {currentQuestion["question/type"] === "mc/trait-cloud" && <MCTraitCloud  {...currentQuestion} nextQuestion={nextQuestion}/>}
+         </>
+         } 
+
+         
         
          </>
     ) 
   }
-  
+
+  // "question/type":"mc/statement",
+
+  // "question/type":"mc/trait-cloud",
