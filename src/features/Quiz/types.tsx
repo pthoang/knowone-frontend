@@ -13,7 +13,7 @@ export interface Choice {
     "xt/id"?: string;
 }
 
-interface StatementChoice {
+export interface StatementChoice {
     "statement/type": string;
     "statement/text": string;
     "statement/trait": string;
