@@ -1,6 +1,6 @@
 import './style.css';
 
-export default function LandingPage() {
+const Home = () => {
     return (
       <>
       <img
@@ -12,3 +12,4 @@ export default function LandingPage() {
     )
   }
   
+export default Home;
