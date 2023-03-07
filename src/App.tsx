@@ -1,29 +1,27 @@
-import { useState } from 'react';
+import React from 'react';
 import './App.css';
-import LandingPage from './features/LandingPage';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './features/Home';
 import NavBar from './features/NavBar';
 import Quiz from './features/Quiz';
+import useGetUser from './hooks/useGetUser'
 
-import Button from '@mui/material/Button';
 
 function App() {
-  const [myBool, setmyBool] = useState(true);
-
-  function toggleBool() {
-    setmyBool(!myBool)
-  }
+  const [user] = useGetUser();
  
   return (
-    <div className="App">
+    <div className='App'>
       <NavBar />
-      <div className="content">
-
-        {myBool ? <LandingPage /> : <Quiz /> }
-
-      {myBool ? ( <div>
-         <Button variant="contained" onClick={toggleBool}>Quiz</Button>
-        </div>) : ( <div>
-        </div>)}
+      <div className='content'>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/'>
+              <Route index element={user ? <Home /> : <Quiz />} />
+              <Route path='quiz' element={<Quiz />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
       </div>
     </div>
   );
