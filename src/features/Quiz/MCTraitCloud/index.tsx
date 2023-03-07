@@ -8,12 +8,17 @@ interface MCTraitCloudProps extends Question {
   nextQuestion: () => void;
 }
 const MCTraitCloud = ({ "xt/id": id, "question/choices": choices, "question/text": text, nextQuestion }:  MCTraitCloudProps) => {
-    const [selectedTraits, setTrait] = useState<string[]>([])
+    const [selectedTraits, setTrait] = useState<number[]>([])
 
+    const limitCheck = () => (selectedTraits.length === 3)
 
-    // Add function
+    const addTrait = (traitValue: number) => {
+        setTrait([...selectedTraits, traitValue])
+    }
 
-    // remove function
+    const removeTrait = (traitValue: number) => {
+        setTrait(selectedTraits.filter(val => val !== traitValue))
+    }
 
     return (
         <>
@@ -22,18 +27,18 @@ const MCTraitCloud = ({ "xt/id": id, "question/choices": choices, "question/text
                 {text}
                 <Typography gutterBottom variant="h5" component="div">
                     { (choices as Choice[]).map((choice, index) => 
-
                         <>
-                            {selectedTraits.includes(choice.text) ? (
-                                <TraitSelected />
+                            {selectedTraits.includes(index) ? (
+                                <TraitSelected removeTrait={removeTrait} traitName={choice.text} traitValue={index} />
                             ) : (
-                                <TraitUnselected />
-                            )}
-                        </>                        
+                                <TraitUnselected addTrait={addTrait} traitName={choice.text} traitValue={index} disabled={limitCheck()}/>
+                            )}   
+                        </>   
                     )}
                 </Typography>
             </CardContent>
         </Card>
+        {limitCheck() && <Button variant="contained" onClick={nextQuestion} sx={{ mx: 2}}>Fortsett</Button>}
         </> 
     )
 } 
