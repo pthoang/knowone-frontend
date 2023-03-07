@@ -66,7 +66,3 @@ export default function Quiz() {
          </>
     ) 
   }
-
-  // "question/type":"mc/statement",
-
-  // "question/type":"mc/trait-cloud",

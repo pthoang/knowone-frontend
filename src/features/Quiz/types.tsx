@@ -1,4 +1,3 @@
-// define the interfaces that will be used for the rest of the child components
 export interface Question {
     "question/type": string;
     "question/text": string;
@@ -8,7 +7,7 @@ export interface Question {
 
 export interface Choice {
     text: string;
-    trait: string;
+    traits: string[];
     img?: string;
     "xt/id"?: string;
 }
@@ -16,7 +15,7 @@ export interface Choice {
 export interface StatementChoice {
     "statement/type": string;
     "statement/text": string;
-    "statement/trait": string;
+    "statement/traits": string[];
     "statement/img": string;
     "xt/id"?: string;
 }
