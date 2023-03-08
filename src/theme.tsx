@@ -16,6 +16,12 @@ declare module '@mui/material/styles' {
     }
   }
 
+  declare module "@mui/material/IconButton" {
+    interface IconButtonPropsColorOverrides {
+      white: true;
+    }
+  }
+
 
 export const mainTheme = createTheme({
     palette: {

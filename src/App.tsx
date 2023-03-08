@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './features/Home';
 import NavBar from './components/NavBar';
 import Quiz from './features/Quiz';
+import ExploreJobs from './features/ExploreJobs';
 import useGetUser from './hooks/useGetUser'
 
 
@@ -20,6 +21,7 @@ function App() {
             <Route path='/'>
               <Route index element={user ? <Home /> : <Quiz />} />
               <Route path='quiz' element={<Quiz />} />
+              <Route path='explore-jobs' element={<ExploreJobs />} />
             </Route>
           </Routes>
         </div>
