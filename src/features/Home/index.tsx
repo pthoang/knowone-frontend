@@ -11,13 +11,12 @@ const Home = () => {
         src="https://knowone.no/assets/images/home/alonetime.svg"
         alt="knowone-home"
       />
-      <h1>Wanna play a game?</h1>
       <ButtonContainer>
         <Button component={Link} to='/quiz' color='primary' size='large'>
           Oppdag deg selv
         </Button>
-        <Button color='primary' size='large'>
-          Oppdag en jobb
+        <Button component={Link} to='/explore-jobs' color='primary' size='large'>
+          Oppdag et yrke
         </Button>
       </ButtonContainer>
       </>    
@@ -29,7 +28,8 @@ const ButtonContainer = styled('div')({
   display: 'flex',
   justifySelf: 'center',
   justifyContent: "space-around",
-  gap: '1rem'
+  gap: '1rem',
+  marginTop: '4rem'
 })
 
 const HomeImg = styled('img')({

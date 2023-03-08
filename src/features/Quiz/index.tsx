@@ -9,7 +9,7 @@ export default function Quiz() {
     const [questions, setQuestions] = useState<Question[]>([])
     
     useEffect(() => {
-      fetch("http://192.168.50.218:3005/intro-questions")
+      fetch("http://localhost:3005/intro-questions")
         .then(res => res.json())
         .then(
           (result) => {
