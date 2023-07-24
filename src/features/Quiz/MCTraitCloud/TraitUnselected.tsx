@@ -1,15 +1,14 @@
-import { Button } from "@mui/material";
+import { Button, Chip } from "@mui/material";
 
 interface TraitUnselectedProps {
     addTrait: (value: number) => void;
     traitName: string;
     traitValue: number;
-    disabled: boolean;
 }
-const TraitUnselected = ({addTrait, traitName, traitValue, disabled}: TraitUnselectedProps) => {
+const TraitUnselected = ({addTrait, traitName, traitValue}: TraitUnselectedProps) => {
     return (
         <>
-        <Button variant="outlined" disabled={disabled} onClick={() => addTrait(traitValue)} sx={{ mx: 2}}>{traitName}</Button>
+        <Chip label={traitName} variant="outlined" onClick={() => addTrait(traitValue)} sx={{ mx: 2}} />
         </> 
     )
 } 
