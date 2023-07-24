@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Chip } from "@mui/material";
 
 interface TraitSelectedProps {
     removeTrait: (value: number) => void;
@@ -8,7 +8,7 @@ interface TraitSelectedProps {
 const TraitSelected = ({ removeTrait, traitName, traitValue }: TraitSelectedProps) => {
     return (
         <>
-        <Button variant="contained" onClick={() => removeTrait(traitValue)} sx={{ mx: 2}}>{traitName}</Button>
+            <Chip label={traitName} onClick={() => removeTrait(traitValue)} sx={{ mx: 2}} />
         </> 
     )
 } 

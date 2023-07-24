@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './features/Home';
-import NavBar from './components/NavBar';
-import Quiz from './features/Quiz';
-import ExploreJobs from './features/ExploreJobs';
-import useGetUser from './hooks/useGetUser'
+import Home from 'features/Home';
+import NavBar from 'components/NavBar';
+import Quiz from 'features/Quiz';
+import ExploreJobs from 'features/ExploreJobs';
+import useGetUser from 'hooks/useGetUser'
 
 
 
