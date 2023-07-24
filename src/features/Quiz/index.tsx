@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import MCIllustration from "./MCIllustration"
 import MCStatement from "./MCStatement"
-import MCTraitCloud from "./MCTraitCloud"
+import MCTraitCloud, { MCTraitCloudProps } from "./MCTraitCloud"
 import './style.css'
 import { Question } from "./types"
+import { Card } from "@mui/material"
 
 export default function Quiz() {
     const [questions, setQuestions] = useState<Question[]>([])
@@ -42,27 +43,26 @@ export default function Quiz() {
     return (
         <> 
          <p> Fancy list of questions and options </p>
-         
-         {currentQuestion && 
-         <>
-          {currentQuestion["question/type"] === "mc/illustration" && <MCIllustration {...currentQuestion} nextQuestion={nextQuestion} />}
-         </>
-         } 
 
-        {currentQuestion && 
-         <>
-          {currentQuestion["question/type"] === "mc/statement" && <MCStatement {...currentQuestion} nextQuestion={nextQuestion}/>}
-         </>
-         } 
+         <Card sx={{ maxWidth: 345, mx: 'auto', my: 2}}>
+          {currentQuestion && 
+          <>
+            {currentQuestion["question/type"] === "mc/illustration" && <MCIllustration {...currentQuestion} nextQuestion={nextQuestion} />}
+          </>
+          } 
 
-        {currentQuestion && 
-         <>
-          {currentQuestion["question/type"] === "mc/trait-cloud" && <MCTraitCloud  {...currentQuestion} nextQuestion={nextQuestion}/>}
-         </>
-         } 
+          {currentQuestion && 
+          <>
+            {currentQuestion["question/type"] === "mc/statement" && <MCStatement {...currentQuestion} nextQuestion={nextQuestion}/>}
+          </>
+          } 
 
-         
-        
+          {currentQuestion && 
+          <>
+            {currentQuestion["question/type"] === "mc/trait-cloud" && <MCTraitCloud  {...(currentQuestion as MCTraitCloudProps)} nextQuestion={nextQuestion}/>}
+          </>
+          } 
+         </Card>
          </>
     ) 
   }
