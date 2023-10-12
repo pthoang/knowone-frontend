@@ -15,9 +15,9 @@ const Home = () => {
         <Button component={Link} to='/quiz' color='primary' size='large'>
           Oppdag deg selv
         </Button>
-        <Button component={Link} to='/explore-jobs' color='primary' size='large'>
+        {/* <Button component={Link} to='/explore-jobs' color='primary' size='large'>
           Oppdag et yrke
-        </Button>
+        </Button> */}
       </ButtonContainer>
       </>    
     )
